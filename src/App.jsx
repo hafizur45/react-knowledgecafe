@@ -7,6 +7,12 @@ import Blogs from './componenents/Blogs/Blogs'
 import Header from './componenents/Header/Header'
 
 function App() {
+
+  const [bookmarks,setBookmarks] = useState([]);
+  const handleAddToBookmark = blog =>{
+   const newBookmarks = [...bookmarks,blog];
+   setBookmarks(newBookmarks)
+  }
  
 
   return (
@@ -14,10 +20,10 @@ function App() {
      
     <Header></Header>
 
-    <main className='md:flex'>
-      <Blogs></Blogs>
-      <Bookmarks></Bookmarks>
-    </main>
+    <div className='md:flex max-w-7xl mx-auto'>
+      <Blogs handleAddToBookmark = {handleAddToBookmark}></Blogs>
+      <Bookmarks bookmarks={bookmarks}></Bookmarks>
+    </div>
   
       
     </>
